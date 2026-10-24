@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maram Boumenjel – Portfolio</title>
+<meta name="description" content="Portfolio de Maram Boumenjel, étudiante en Licence Informatique de Gestion à l’ESSECT.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--p:#c084fc;--s:#f472b6;--grad:linear-gradient(120deg,var(--p),var(--s));--bg:#05030c;--card:rgba(255,255,255,.06);--bd:rgba(192,132,252,.28);--tx:#efeaf7;--mut:#aca4bd;--sh:0 10px 40px rgba(192,132,252,.16);--hd:rgba(5,3,12,.65);--term:#0c0718}
+:root[data-theme="light"]{--bg:#fbf8ff;--card:#fff;--bd:rgba(168,85,247,.25);--tx:#241a33;--mut:#625a72;--sh:0 10px 30px rgba(140,60,190,.12);--hd:rgba(251,248,255,.82);--term:#1d1030}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg);color:var(--tx);line-height:1.65;transition:background .5s,color .5s;overflow-x:hidden}
+#bg{position:fixed;inset:0;z-index:0;width:100%;height:100%}
+header,main,footer{position:relative;z-index:1}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--s);outline-offset:3px}
+#prog{position:fixed;top:0;left:0;height:3px;width:0;background:var(--grad);z-index:60}
+#glow{position:fixed;width:360px;height:360px;margin:-180px 0 0 -180px;border-radius:50%;background:radial-gradient(circle,rgba(244,114,182,.18),transparent 65%);pointer-events:none;z-index:0;transition:opacity .3s}
+
+header{position:fixed;top:0;inset-inline:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px clamp(16px,4vw,48px);background:var(--hd);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--bd)}
+.logo{display:flex;align-items:center;gap:12px;min-width:0;font-weight:800;font-size:1.2rem;letter-spacing:-.02em}
+.logo span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.logo img{flex:none;width:46px;height:46px;border-radius:50%;object-fit:cover;padding:2px;background:var(--grad);box-shadow:0 0 18px rgba(244,114,182,.45);transition:transform .3s}
+.logo:hover img{transform:scale(1.08) rotate(-4deg)}
+@media(max-width:520px){.logo{font-size:.95rem;gap:8px}.logo img{width:38px;height:38px}}
+nav{display:flex;gap:4px}
+nav a{padding:8px 14px;border-radius:30px;font-size:.92rem;font-weight:500;color:var(--mut);transition:.25s}
+nav a:hover{color:var(--tx);background:var(--card)}
+.tools{display:flex;gap:8px;align-items:center}
+.lang{display:flex;border:1px solid var(--bd);border-radius:30px;overflow:hidden}
+.lang button{background:none;border:0;color:var(--mut);font:700 .8rem 'Plus Jakarta Sans',sans-serif;padding:7px 12px;cursor:pointer}
+.lang button.on{background:var(--grad);color:#1a0b2e}
+#theme{width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--tx);font-size:1.05rem;cursor:pointer;transition:.3s}
+#theme:hover{transform:rotate(25deg)}
+@media(max-width:860px){nav{display:none}}
+
+section{padding:96px clamp(16px,5vw,64px) 24px;max-width:1180px;margin:auto}
+h2{font-size:clamp(1.7rem,4vw,2.4rem);font-weight:800;letter-spacing:-.025em;margin-bottom:32px;display:inline-block;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:6px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:26px;padding:28px;box-shadow:var(--sh);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);transition:border-color .3s,transform .25s}
+.card:hover{border-color:var(--s)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:22px}
+.btn{display:inline-block;border:0;cursor:pointer;font:700 1rem 'Plus Jakarta Sans',sans-serif;padding:14px 30px;border-radius:30px;background:var(--grad);color:#1a0b2e;box-shadow:0 8px 28px rgba(244,114,182,.35);transition:.3s}
+.btn:hover{transform:translateY(-3px) scale(1.03)}
+.btn.ghost{background:transparent;color:var(--tx);border:1.5px solid var(--p);box-shadow:none}
+
+#hero{min-height:100vh;display:flex;align-items:center;gap:clamp(24px,5vw,64px);padding-top:120px;flex-wrap:wrap-reverse}
+.hero-txt{flex:1 1 380px}
+.hi{color:var(--mut);font-weight:500}
+h1{font-size:clamp(2.4rem,7vw,4.4rem);line-height:1.05;font-weight:800;letter-spacing:-.035em;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;margin:4px 0 14px}
+.role{font-size:clamp(1.1rem,2.4vw,1.45rem);font-weight:700;min-height:1.8em}
+.role i{display:inline-block;width:2px;height:1.1em;background:var(--s);vertical-align:-.15em;margin-inline-start:3px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.d{color:var(--mut);max-width:54ch;margin:6px 0 24px}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+.social{display:flex;gap:10px;margin-top:22px}
+.social a{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--bd);background:var(--card);font-weight:800;font-size:.85rem;transition:.3s}
+.social a:hover{background:var(--grad);color:#1a0b2e;transform:translateY(-4px) rotate(-6deg)}
+.side{flex:0 1 380px;margin:auto;display:grid;gap:18px;width:min(100%,380px)}
+.photo{position:relative;width:min(70vw,320px);aspect-ratio:1;margin:auto}
+.photo::before{content:"";position:absolute;inset:-8px;border-radius:38% 62% 55% 45%/48% 42% 58% 52%;background:var(--grad);animation:morph 9s ease-in-out infinite}
+.photo img{position:relative;width:100%;height:100%;object-fit:cover;border-radius:38% 62% 55% 45%/48% 42% 58% 52%;border:6px solid var(--bg);animation:morph 9s ease-in-out infinite;background:var(--card)}
+@keyframes morph{50%{border-radius:55% 45% 40% 60%/55% 60% 40% 45%}}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin-bottom:8px}
+.stat{text-align:center;padding:20px}
+.stat b{display:block;font-size:2.3rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{color:var(--mut);font-size:.9rem}
+
+.mq{overflow:hidden;margin-top:36px;border-block:1px solid var(--bd);padding:14px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.mq div{display:flex;gap:44px;width:max-content;animation:mq 28s linear infinite;font-weight:800;font-size:1.15rem;color:var(--mut)}
+.mq span:nth-child(3n+1){color:var(--p)}.mq span:nth-child(3n+2){color:var(--s)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+.card h3{font-size:1.2rem;margin-bottom:10px}
+.card p{color:var(--mut)}
+.ico{font-size:1.9rem;margin-bottom:10px}
+.bar-l{margin-top:14px}
+.bar-l div{display:flex;justify-content:space-between;font-size:.88rem;font-weight:600;margin-bottom:5px}
+.bar-l i{display:block;height:8px;border-radius:8px;background:var(--bd);overflow:hidden}
+.bar-l i b{display:block;height:100%;width:0;border-radius:8px;background:var(--grad);transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
+.tag{display:inline-block;font-size:.78rem;font-weight:700;padding:4px 12px;border-radius:20px;margin:14px 6px 0 0;border:1px solid var(--bd);color:var(--p)}
+.proj .tilt{transform-style:preserve-3d;will-change:transform}
+.proj .more{display:inline-block;margin-top:16px;font-weight:700;color:var(--s)}
+.proj .more:hover{text-decoration:underline}
+.cert{display:flex;gap:16px;align-items:center}.cert .ico{margin:0}.cert b{display:block}.cert span{color:var(--mut);font-size:.9rem}
+
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+.gal button{border:1px solid var(--bd);padding:0;border-radius:24px;overflow:hidden;cursor:zoom-in;background:var(--card);aspect-ratio:4/5;box-shadow:var(--sh)}
+.gal img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.gal button:hover img{transform:scale(1.07)}
+#lb{position:fixed;inset:0;z-index:70;background:rgba(5,3,12,.93);display:none;align-items:center;justify-content:center;padding:24px}
+#lb.open{display:flex}
+#lb img{max-width:92vw;max-height:86vh;border-radius:20px;box-shadow:0 0 60px rgba(192,132,252,.4)}
+#lb .x,#lb .nv{position:absolute;background:var(--card);color:#fff;border:1px solid var(--bd);border-radius:50%;width:46px;height:46px;font-size:1.3rem;cursor:pointer}
+#lb .x{top:20px;right:20px}#lb .prev{left:16px}#lb .next{right:16px}#lb .nv{top:50%;transform:translateY(-50%)}
+
+.contact{display:grid;grid-template-columns:1fr 1.3fr;gap:22px}
+@media(max-width:760px){.contact{grid-template-columns:1fr}}
+.info p{margin-bottom:14px;color:var(--mut)}.info b{color:var(--tx);display:block}.info a{color:var(--p);word-break:break-all}
+form{display:grid;gap:14px}
+label{font-weight:600;font-size:.9rem;display:grid;gap:6px}
+input,textarea{font:inherit;color:var(--tx);background:var(--bg);border:1.5px solid var(--bd);border-radius:18px;padding:13px 16px;width:100%;transition:.25s}
+input:focus,textarea:focus{outline:none;border-color:var(--s);box-shadow:0 0 0 4px rgba(244,114,182,.2)}
+textarea{min-height:130px;resize:vertical}
+#msg{min-height:1.4em;font-weight:600;color:var(--p)}
+footer{text-align:center;padding:48px 16px;margin-top:64px;color:var(--mut);border-top:1px solid var(--bd);font-size:.92rem}
+#toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,120px);background:var(--grad);color:#1a0b2e;font-weight:700;padding:12px 22px;border-radius:30px;z-index:80;transition:transform .5s}
+#toast.on{transform:translate(-50%,0)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div id="prog"></div><div id="glow"></div>
+<canvas id="bg" aria-hidden="true"></canvas>
+
+<header>
+  <a href="#hero" class="logo"><img id="avatar" alt="Maram Boumenjel"><span>Maram Boumenjel</span></a>
+  <nav>
+    <a href="#about" data-i="n_about"></a><a href="#skills" data-i="n_skills"></a><a href="#projects" data-i="n_projects"></a>
+    <a href="#gallery" data-i="n_gallery"></a><a href="#contact" data-i="n_contact"></a>
+  </nav>
+  <div class="tools">
+    <div class="lang" role="group" aria-label="Langue"><button data-l="fr" class="on">FR</button><button data-l="en">EN</button></div>
+    <button id="theme" aria-label="Thème">🌙</button>
+  </div>
+</header>
+
+<main>
+<section id="hero">
+  <div class="hero-txt">
+    <p class="hi" data-i="hi"></p>
+    <h1>Maram Boumenjel</h1>
+    <p class="role"><span id="typed"></span><i></i></p>
+    <p class="d" data-i="intro"></p>
+    <div class="btns">
+      <button class="btn" id="cv" data-i="cv"></button>
+      <a class="btn ghost" href="#projects" data-i="n_projects"></a>
+    </div>
+    <div class="social">
+      <a href="https://github.com/maram771" target="_blank" rel="noopener" aria-label="GitHub">GH</a>
+      <a href="https://www.linkedin.com/in/maram-boumenjel-b59349331" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+      <a href="mailto:boumenjelmaram2@gmail.com" aria-label="Email">@</a>
+    </div>
+  </div>
+  <div class="side">
+    <div class="photo"><img id="me" alt="Maram Boumenjel"></div>
+  </div>
+</section>
+
+<section id="about">
+  <h2 data-i="n_about"></h2>
+  <div class="card"><p data-i="about"></p></div>
+  <div class="stats" style="margin-top:22px">
+    <div class="card stat"><b data-n="3">0</b><span data-i="st1"></span></div>
+    <div class="card stat"><b data-n="3">0</b><span data-i="st2"></span></div>
+    <div class="card stat"><b data-n="2">0</b><span data-i="st3"></span></div>
+    <div class="card stat"><b data-n="100" data-s="%">0</b><span data-i="st4"></span></div>
+  </div>
+  <div class="mq" aria-hidden="true"><div id="mq"></div></div>
+</section>
+
+<section id="skills">
+  <h2 data-i="n_skills"></h2>
+  <div class="grid" id="skillgrid"></div>
+</section>
+
+<section id="projects" class="proj">
+  <h2 data-i="n_projects"></h2>
+  <div class="grid">
+    <div class="card tilt"><div class="ico">🏆</div><h3>ChallengeHub</h3><p data-i="p1"></p><span class="tag">Web</span><span class="tag">Chatbot</span><span class="tag">Communauté</span><br><a class="more" href="https://github.com/maram771" target="_blank" rel="noopener">GitHub ↗</a></div>
+    <div class="card tilt"><div class="ico">📄</div><h3>CareerPro</h3><p data-i="p2"></p><span class="tag">Web</span><span class="tag">CV</span><span class="tag">Carrière</span><br><a class="more" href="https://github.com/maram771" target="_blank" rel="noopener">GitHub ↗</a></div>
+    <div class="card tilt"><div class="ico">💄</div><h3 data-i="p3t"></h3><p data-i="p3"></p><span class="tag">E-commerce</span><span class="tag">Web</span><br><a class="more" href="https://github.com/maram771" target="_blank" rel="noopener">GitHub ↗</a></div>
+  </div>
+</section>
+
+<section id="edu">
+  <h2 data-i="n_edu"></h2>
+  <div class="card cert"><span class="ico">🎓</span><div><b data-i="edu1"></b><span>ESSECT – Université de Tunis</span></div></div>
+</section>
+
+<section id="gallery">
+  <h2 data-i="n_gallery"></h2>
+  <div class="gal" id="gal"></div>
+</section>
+
+<section id="contact">
+  <h2 data-i="n_contact"></h2>
+  <div class="contact">
+    <div class="card info">
+      <p><b>Email</b><a href="mailto:boumenjelmaram2@gmail.com">boumenjelmaram2@gmail.com</a></p>
+      <p><b data-i="tel"></b><a href="tel:+21622732512" dir="ltr">+216 22 732 512</a></p>
+      <p><b>LinkedIn</b><a href="https://www.linkedin.com/in/maram-boumenjel-b59349331" target="_blank" rel="noopener">maram-boumenjel</a></p>
+      <p><b>GitHub</b><a href="https://github.com/maram771" target="_blank" rel="noopener">github.com/maram771</a></p>
+    </div>
+    <form class="card" id="form">
+      <label><span data-i="f1"></span><input id="fn" required autocomplete="name"></label>
+      <label><span data-i="f2"></span><input id="fe" type="email" required autocomplete="email"></label>
+      <label><span data-i="f3"></span><textarea id="fm" required></textarea></label>
+      <button class="btn" type="submit" data-i="send"></button>
+      <p id="msg" role="status"></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>© 2026 Maram Boumenjel – ESSECT</footer>
+<div id="toast" role="status"></div>
+<div id="lb" role="dialog" aria-modal="true"><button class="x" aria-label="Fermer">✕</button><button class="nv prev" aria-label="Précédent">‹</button><img alt=""><button class="nv next" aria-label="Suivant">›</button></div>
+
+<script>
+(function(){
+'use strict';
+/* ====== ✏️ À MODIFIER : tes infos ====== */
+var CONFIG={
+  profilePhoto:'IMG_1512.jpg',                 // mets la photo dans le MÊME dossier que ce fichier
+  gallery:[
+    'IMG_1512.jpg',
+    'BA180B90-DB45-4E96-BAF4-E2B9ACD82F1E.jpeg',
+    // 10 photos du dossier "photos" (noms d'origine, pas besoin de renommer)
+    'photos/Bureau moderne au coucher du soleil.png',
+    'photos/Entretien d’embauche en bureau moderne.png',
+    'photos/Espace de travail moderne et inspirant.png',
+    'photos/Étudiante souriante en amphithéâtre.png',
+    'photos/Objectifs et café au chaud.png',
+    'photos/Portrait professionnel au coucher du soleil.png',
+    'photos/Portrait professionnel d’une jeune femme souriante.png',
+    'photos/Portrait professionnel d’une jeune femme souriant.png',
+    'photos/Présentation de stratégie digitale égayée.png',
+    'photos/Présentation professionnelle en classe moderne.png',
+    'photos/Soutenance de mémoire à Tunis.png'
+  ],   // une photo introuvable est simplement masquée (pas d'image cassée)
+  cvUrl:'https://www.overleaf.com/download/project/6ad109d65176fdf86da8e871/build/1a141060e82-89c4ff5629d3bd67/output/output.pdf?compileGroup=standard&clsiserverid=clsi-reg-regional-free-c3d-fkbp&enable_pdf_caching=true&popupDownload=true&editorId=a7c4d89f-0ff7-4610-8eb1-54cbbd0ee3e0', // ou 'CV_Maram_Boumenjel.pdf' si tu mets le PDF dans le dossier
+  skills:[['HTML / CSS',90],['JavaScript',80],['PHP / Laravel',75],['SQL & bases de données',80],['Git & GitHub',85]],
+  stack:['HTML','CSS','JavaScript','PHP','Laravel','SQL','Git','GitHub','UI/UX','Chatbot','E-commerce']
+};
+/* ======================================= */
+var T={
+fr:{n_about:'À propos',n_skills:'Compétences',n_projects:'Projets',n_edu:'Formation',n_gallery:'Galerie',n_contact:'Contact',
+hi:'Bonjour, je suis',roles:['Étudiante en Informatique de Gestion','Développeuse web','Passionnée de projets digitaux'],
+intro:'Étudiante en 3ème année de Licence Informatique de Gestion à l’ESSECT, je conçois des sites web utiles : de la communauté de défis à l’outil de CV et à la boutique en ligne.',
+cv:'Télécharger mon CV',stat:'Licence Informatique de Gestion – 3ème année · ESSECT',
+about:'Je m’appelle Maram et je suis passionnée par l’informatique de gestion : transformer un besoin réel en application web claire et agréable à utiliser. J’aime apprendre en construisant, et chaque projet de ce portfolio est né d’une idée concrète.',
+st1:'Année de licence',st2:'Projets web',st3:'Langues du site',st4:'Motivation',
+p1:'Plateforme où les utilisateurs publient et relèvent des défis, avec un chatbot intégré pour guider la communauté.',
+p2:'Site de traitement de CV qui aide les candidats à analyser et améliorer leur profil pour la recherche d’emploi.',
+p3t:'Boutique cosmétique',p3:'Site de vente en ligne de produits cosmétiques : catalogue, fiches produits et parcours d’achat.',
+edu1:'Licence Informatique de Gestion – 3ème année',tel:'Téléphone',f1:'Nom',f2:'Email',f3:'Message',send:'Envoyer le message',
+ok:'Ta messagerie va s’ouvrir pour envoyer le message.',cvok:'CV téléchargé ✨'},
+en:{n_about:'About',n_skills:'Skills',n_projects:'Projects',n_edu:'Education',n_gallery:'Gallery',n_contact:'Contact',
+hi:'Hi, I’m',roles:['Business Computing Student','Web Developer','Digital Projects Enthusiast'],
+intro:'A third-year Business Computing undergraduate at ESSECT, I build useful websites: from a challenge community to a CV tool and an online shop.',
+cv:'Download my CV',stat:'Bachelor in Business Computing – 3rd year · ESSECT',
+about:'I’m Maram, and I’m passionate about business computing: turning a real need into a clear, pleasant web application. I learn by building, and every project here started from a concrete idea.',
+st1:'Bachelor year',st2:'Web projects',st3:'Site languages',st4:'Motivation',
+p1:'A platform where users post and take on challenges, with a built-in chatbot to guide the community.',
+p2:'A CV processing website that helps candidates analyze and improve their profile for job hunting.',
+p3t:'Cosmetics shop',p3:'An online store for cosmetic products: catalog, product pages and a purchase flow.',
+edu1:'Bachelor in Business Computing – 3rd year',tel:'Phone',f1:'Name',f2:'Email',f3:'Message',send:'Send message',
+ok:'Your email app will open to send the message.',cvok:'CV downloaded ✨'}
+};
+var lang='fr',$=function(s){return document.querySelector(s)},$$=function(s){return document.querySelectorAll(s)};
+
+/* Photo avec repli (initiales) */
+var FALLBACK='data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><linearGradient id="g"><stop offset="0" stop-color="#c084fc"/><stop offset="1" stop-color="#f472b6"/></linearGradient></defs><rect width="200" height="200" fill="url(#g)"/><text x="100" y="125" font-size="76" font-family="sans-serif" font-weight="800" fill="#fff" text-anchor="middle">MB</text></svg>');
+[$('#me'),$('#avatar')].forEach(function(im){
+  im.onerror=function(){im.onerror=null;im.src=FALLBACK};
+  im.src=CONFIG.profilePhoto;
+});
+
+/* Compétences + marquee */
+var sg=$('#skillgrid');
+CONFIG.skills.forEach(function(s){
+  var c=document.createElement('div');c.className='card';
+  c.innerHTML='<div class="bar-l" style="margin:0"><div><span>'+s[0]+'</span><span>'+s[1]+'%</span></div><i><b data-w="'+s[1]+'"></b></i></div>';
+  sg.appendChild(c);
+});
+var mq=$('#mq');mq.innerHTML=CONFIG.stack.concat(CONFIG.stack).map(function(w){return '<span>'+w+'</span>'}).join('');
+
+/* Langue + effet machine à écrire */
+var tI=0,cI=0,del=false,tm;
+function type(){
+  var w=T[lang].roles[tI%T[lang].roles.length];
+  cI+=del?-1:1;$('#typed').textContent=w.slice(0,cI);
+  var d=del?35:75;
+  if(!del&&cI===w.length){del=true;d=1600}
+  else if(del&&cI===0){del=false;tI++;d=350}
+  tm=setTimeout(type,d);
+}
+function setLang(l){
+  lang=l;var d=T[l];
+  $$('[data-i]').forEach(function(e){e.textContent=d[e.dataset.i]});
+  document.documentElement.lang=l;
+  $$('.lang button').forEach(function(b){b.classList.toggle('on',b.dataset.l===l)});
+  clearTimeout(tm);cI=0;del=false;type();
+  try{localStorage.setItem('mb-lang',l)}catch(e){}
+}
+$$('.lang button').forEach(function(b){b.onclick=function(){setLang(b.dataset.l)}});
+
+/* Thème */
+function setTheme(t){document.documentElement.dataset.theme=t;$('#theme').textContent=t==='dark'?'🌙':'☀️';try{localStorage.setItem('mb-theme',t)}catch(e){}}
+$('#theme').onclick=function(){setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark')};
+
+/* Toast */
+function toast(m){var t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(function(){t.classList.remove('on')},2400)}
+
+/* CV (PDF si cvUrl, sinon .txt) */
+$('#cv').onclick=function(){
+  if(CONFIG.cvUrl){
+    var l=document.createElement('a');l.href=CONFIG.cvUrl;l.download='CV_Maram_Boumenjel.pdf';l.target='_blank';l.rel='noopener';
+    document.body.appendChild(l);l.click();l.remove();toast(T[lang].cvok);return;
+  }
+  var f=lang==='fr';
+  var cv=['MARAM BOUMENJEL',f?'Étudiante en Licence Informatique de Gestion – 3ème année':'Business Computing Bachelor student – 3rd year','ESSECT','',
+  'Email : boumenjelmaram2@gmail.com',(f?'Téléphone : ':'Phone : ')+'+216 22 732 512','LinkedIn : https://www.linkedin.com/in/maram-boumenjel-b59349331','GitHub : https://github.com/maram771','',
+  f?'PROJETS':'PROJECTS','- ChallengeHub : '+T[lang].p1,'- CareerPro : '+T[lang].p2,'- '+T[lang].p3t+' : '+T[lang].p3,'',
+  f?'COMPÉTENCES':'SKILLS'].concat(CONFIG.skills.map(function(s){return '- '+s[0]})).join('\r\n');
+  var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([cv],{type:'text/plain;charset=utf-8'}));
+  a.download='CV_Maram_Boumenjel.txt';document.body.appendChild(a);a.click();a.remove();toast(T[lang].cvok);
+};
+
+/* Galerie + lightbox */
+var gal=$('#gal'),cur=0,lb=$('#lb'),lbi=$('#lb img');
+function list(){return Array.prototype.map.call($$('#gal img'),function(im){return im.getAttribute('src')})}
+/* essaie plusieurs écritures du nom (accents, apostrophe ' ou ’) avant de masquer la photo */
+function variants(u){var a=[];[u,u.normalize('NFD'),u.normalize('NFC')].forEach(function(x){a.push(x,x.replace(/'/g,'’'),x.replace(/’/g,"'"))});
+  return a.filter(function(v,i){return a.indexOf(v)===i})}
+CONFIG.gallery.forEach(function(u){
+  var b=document.createElement('button');b.setAttribute('aria-label','Photo');
+  var im=new Image(),vs=variants(u),k=0;im.alt='Photo';
+  im.onerror=function(){k++;if(k<vs.length)im.src=vs[k];else b.remove()};
+  b.appendChild(im);
+  b.onclick=function(){show(list().indexOf(im.getAttribute('src')));lb.classList.add('open');var one=list().length<2;$$('#lb .nv').forEach(function(x){x.style.display=one?'none':''})};
+  im.src=vs[0];gal.appendChild(b);
+});
+function show(i){var L=list();if(!L.length)return;cur=(i+L.length)%L.length;lbi.src=L[cur]}
+$('#lb .x').onclick=function(){lb.classList.remove('open')};
+$('#lb .prev').onclick=function(){show(cur-1)};$('#lb .next').onclick=function(){show(cur+1)};
+lb.onclick=function(e){if(e.target===lb)lb.classList.remove('open')};
+document.addEventListener('keydown',function(e){
+  if(!lb.classList.contains('open'))return;
+  if(e.key==='Escape')lb.classList.remove('open');
+  if(e.key==='ArrowRight')show(cur+1);if(e.key==='ArrowLeft')show(cur-1);
+});
+
+/* Formulaire */
+$('#form').onsubmit=function(e){
+  e.preventDefault();var n=$('#fn').value,m=$('#fe').value,t=$('#fm').value;
+  location.href='mailto:boumenjelmaram2@gmail.com?subject='+encodeURIComponent('Portfolio – '+n)+'&body='+encodeURIComponent(t+'\n\n'+n+' ('+m+')');
+  $('#msg').textContent=T[lang].ok;this.reset();
+};
+
+/* Progression + halo curseur + tilt 3D */
+var prog=$('#prog'),glow=$('#glow'),touch=matchMedia('(hover:none)').matches;
+addEventListener('scroll',function(){var h=document.documentElement;prog.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%'},{passive:true});
+if(touch)glow.style.display='none';
+$$('.tilt').forEach(function(c){
+  c.addEventListener('mousemove',function(e){var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+    c.style.transform='perspective(700px) rotateY('+x*12+'deg) rotateX('+(-y*12)+'deg) translateY(-6px)'});
+  c.addEventListener('mouseleave',function(){c.style.transform=''});
+});
+
+/* Révélation : compteurs + barres */
+var io=new IntersectionObserver(function(es){es.forEach(function(en){
+  if(!en.isIntersecting)return;var el=en.target;io.unobserve(el);
+  if(el.dataset.n){var N=+el.dataset.n,s=el.dataset.s||'',k=0,iv=setInterval(function(){k++;el.textContent=Math.round(N*k/30)+s;if(k>=30)clearInterval(iv)},40)}
+  if(el.dataset.w)el.style.width=el.dataset.w+'%';
+})},{threshold:.4});
+$$('[data-n],[data-w]').forEach(function(e){io.observe(e)});
+
+/* Particules interactives */
+var cv=$('#bg'),ctx=cv.getContext('2d'),W,H,P=[],mouse={x:-999,y:-999},reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function size(){var r=devicePixelRatio||1;W=innerWidth;H=innerHeight;cv.width=W*r;cv.height=H*r;ctx.setTransform(r,0,0,r,0,0);
+  var n=Math.min(110,Math.floor(W*H/14000));P=[];
+  for(var i=0;i<n;i++)P.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.5,vy:(Math.random()-.5)*.5,r:Math.random()*1.8+.8,c:Math.random()<.5?'192,132,252':'244,114,182'})}
+addEventListener('resize',size);
+addEventListener('mousemove',function(e){mouse.x=e.clientX;mouse.y=e.clientY;glow.style.transform='translate('+e.clientX+'px,'+e.clientY+'px)'});
+addEventListener('click',function(e){ /* clic = explosion de particules */
+  P.forEach(function(p){var dx=p.x-e.clientX,dy=p.y-e.clientY,d=Math.sqrt(dx*dx+dy*dy)||1;if(d<220){p.vx+=dx/d*4;p.vy+=dy/d*4}})});
+addEventListener('touchmove',function(e){var t=e.touches[0];mouse.x=t.clientX;mouse.y=t.clientY},{passive:true});
+addEventListener('mouseout',function(){mouse.x=mouse.y=-999});
+function frame(){
+  ctx.clearRect(0,0,W,H);var light=document.documentElement.dataset.theme==='light',a=light?.55:.85;
+  for(var i=0;i<P.length;i++){
+    var p=P[i],dx=p.x-mouse.x,dy=p.y-mouse.y,d=Math.sqrt(dx*dx+dy*dy);
+    if(d<140&&d>0){p.vx+=dx/d*.06;p.vy+=dy/d*.06}
+    p.vx*=.99;p.vy*=.99;if(Math.abs(p.vx)+Math.abs(p.vy)<.15){p.vx+=(Math.random()-.5)*.03;p.vy+=(Math.random()-.5)*.03}
+    p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
+    ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,6.283);ctx.fillStyle='rgba('+p.c+','+a+')';ctx.fill();
+    for(var j=i+1;j<P.length;j++){var q=P[j],x=p.x-q.x,y=p.y-q.y,dd=x*x+y*y;
+      if(dd<14400){ctx.strokeStyle='rgba('+p.c+','+(1-Math.sqrt(dd)/120)*(light?.28:.35)+')';ctx.lineWidth=.7;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.stroke()}}
+    if(d<160){ctx.strokeStyle='rgba(244,114,182,'+(1-d/160)*.5+')';ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(mouse.x,mouse.y);ctx.stroke()}
+  }
+  if(!reduce)requestAnimationFrame(frame);
+}
+size();frame();
+
+/* Init */
+var sl='fr',st=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';
+try{sl=localStorage.getItem('mb-lang')||sl;st=localStorage.getItem('mb-theme')||st}catch(e){}
+setLang(T[sl]?sl:'fr');setTheme(st);
+})();
+</script>
+</body>
+</html>
