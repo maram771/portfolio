@@ -36,7 +36,7 @@ nav a:hover{color:var(--tx);background:var(--card)}
 .lang button.on{background:var(--grad);color:#1a0b2e}
 #theme{width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--tx);font-size:1.05rem;cursor:pointer;transition:.3s}
 #theme:hover{transform:rotate(25deg)}
-@media(max-width:860px){nav{display:none}}
+@media(max-width:980px){nav{display:none}}
 
 section{padding:96px clamp(16px,5vw,64px) 24px;max-width:1180px;margin:auto}
 h2{font-size:clamp(1.7rem,4vw,2.4rem);font-weight:800;letter-spacing:-.025em;margin-bottom:32px;display:inline-block;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:6px}
@@ -46,6 +46,7 @@ h2{font-size:clamp(1.7rem,4vw,2.4rem);font-weight:800;letter-spacing:-.025em;mar
 .btn{display:inline-block;border:0;cursor:pointer;font:700 1rem 'Plus Jakarta Sans',sans-serif;padding:14px 30px;border-radius:30px;background:var(--grad);color:#1a0b2e;box-shadow:0 8px 28px rgba(244,114,182,.35);transition:.3s}
 .btn:hover{transform:translateY(-3px) scale(1.03)}
 .btn.ghost{background:transparent;color:var(--tx);border:1.5px solid var(--p);box-shadow:none}
+.btn.sm{padding:9px 18px;font-size:.88rem}
 
 #hero{min-height:100vh;display:flex;align-items:center;gap:clamp(24px,5vw,64px);padding-top:120px;flex-wrap:wrap-reverse}
 .hero-txt{flex:1 1 380px}
@@ -88,6 +89,24 @@ h1{font-size:clamp(2.4rem,7vw,4.4rem);line-height:1.05;font-weight:800;letter-sp
 .proj .more:hover{text-decoration:underline}
 .cert{display:flex;gap:16px;align-items:center}.cert .ico{margin:0}.cert b{display:block}.cert span{color:var(--mut);font-size:.9rem}
 
+/* Démo : fermer la boucle client */
+.steps{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.steps span{padding:7px 14px;border-radius:30px;border:1px solid var(--bd);font-size:.85rem;font-weight:700;color:var(--p);background:var(--card)}
+.steps span+span::before{content:"→";margin-inline-end:10px;color:var(--s)}
+.lgrid{display:grid;grid-template-columns:1.2fr 1fr;gap:22px;margin-top:22px;align-items:start}
+@media(max-width:860px){.lgrid{grid-template-columns:1fr}}
+.lp{margin-bottom:14px;padding:22px}
+.lp:last-child{margin-bottom:0}
+.lp h3{margin-bottom:6px}
+.lrow{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:14px}
+.pill{font-size:.8rem;font-weight:700;padding:5px 12px;border-radius:20px;border:1px solid var(--bd);color:var(--p)}
+.pill.ok{background:var(--grad);color:#1a0b2e;border-color:transparent}
+.kpi{margin-top:0}
+.log{min-height:96px}
+.log div{padding:10px 0;border-bottom:1px solid var(--bd);font-size:.88rem;color:var(--mut)}
+.log div:last-child{border-bottom:0}
+.log .empty{font-style:italic}
+
 .gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
 .gal button{border:1px solid var(--bd);padding:0;border-radius:24px;overflow:hidden;cursor:zoom-in;background:var(--card);aspect-ratio:4/5;box-shadow:var(--sh)}
 .gal img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
@@ -120,7 +139,7 @@ footer{text-align:center;padding:48px 16px;margin-top:64px;color:var(--mut);bord
 <header>
   <a href="#hero" class="logo"><img id="avatar" alt="Maram Boumenjel"><span>Maram Boumenjel</span></a>
   <nav>
-    <a href="#about" data-i="n_about"></a><a href="#skills" data-i="n_skills"></a><a href="#projects" data-i="n_projects"></a>
+    <a href="#about" data-i="n_about"></a><a href="#skills" data-i="n_skills"></a><a href="#projects" data-i="n_projects"></a><a href="#loop" data-i="n_loop"></a>
     <a href="#gallery" data-i="n_gallery"></a><a href="#contact" data-i="n_contact"></a>
   </nav>
   <div class="tools">
@@ -156,7 +175,7 @@ footer{text-align:center;padding:48px 16px;margin-top:64px;color:var(--mut);bord
   <div class="card"><p data-i="about"></p></div>
   <div class="stats" style="margin-top:22px">
     <div class="card stat"><b data-n="3">0</b><span data-i="st1"></span></div>
-    <div class="card stat"><b data-n="3">0</b><span data-i="st2"></span></div>
+    <div class="card stat"><b data-n="4">0</b><span data-i="st2"></span></div>
     <div class="card stat"><b data-n="2">0</b><span data-i="st3"></span></div>
     <div class="card stat"><b data-n="100" data-s="%">0</b><span data-i="st4"></span></div>
   </div>
@@ -174,6 +193,28 @@ footer{text-align:center;padding:48px 16px;margin-top:64px;color:var(--mut);bord
     <div class="card tilt"><div class="ico">🏆</div><h3>ChallengeHub</h3><p data-i="p1"></p><span class="tag">Web</span><span class="tag">Chatbot</span><span class="tag">Communauté</span><br><a class="more" href="https://github.com/maram771" target="_blank" rel="noopener">GitHub ↗</a></div>
     <div class="card tilt"><div class="ico">📄</div><h3>CareerPro</h3><p data-i="p2"></p><span class="tag">Web</span><span class="tag">CV</span><span class="tag">Carrière</span><br><a class="more" href="https://github.com/maram771" target="_blank" rel="noopener">GitHub ↗</a></div>
     <div class="card tilt"><div class="ico">💄</div><h3 data-i="p3t"></h3><p data-i="p3"></p><span class="tag">E-commerce</span><span class="tag">Web</span><br><a class="more" href="https://github.com/maram771" target="_blank" rel="noopener">GitHub ↗</a></div>
+    <div class="card tilt"><div class="ico">🔁</div><h3 data-i="p4t"></h3><p data-i="p4"></p><span class="tag">n8n</span><span class="tag">IA</span><span class="tag">GRC / CRM</span><br><a class="more" href="#loop" data-i="demo"></a></div>
+  </div>
+</section>
+
+<section id="loop">
+  <h2 data-i="n_loop"></h2>
+  <div class="card">
+    <h3 data-i="loop_h"></h3>
+    <p data-i="loop_intro"></p>
+    <div class="steps"><span data-i="stp1"></span><span data-i="stp2"></span><span data-i="stp3"></span><span data-i="stp4"></span></div>
+  </div>
+  <div class="lgrid">
+    <div>
+      <h3 style="margin-bottom:14px" data-i="l_recv"></h3>
+      <div id="loopList"></div>
+    </div>
+    <div class="card">
+      <div class="bar-l kpi"><div><span data-i="l_kpi"></span><span id="kpiv">0%</span></div><i><b id="kpib"></b></i></div>
+      <h3 style="margin-top:24px" data-i="l_log"></h3>
+      <div class="log" id="loopLog"></div>
+      <button class="btn ghost sm" id="loopReset" style="margin-top:16px" data-i="l_reset"></button>
+    </div>
   </div>
 </section>
 
@@ -234,11 +275,11 @@ var CONFIG={
   ],   // une photo introuvable est simplement masquée (pas d'image cassée)
   cvUrl:'https://www.overleaf.com/download/project/6ad109d65176fdf86da8e871/build/1a141060e82-89c4ff5629d3bd67/output/output.pdf?compileGroup=standard&clsiserverid=clsi-reg-regional-free-c3d-fkbp&enable_pdf_caching=true&popupDownload=true&editorId=a7c4d89f-0ff7-4610-8eb1-54cbbd0ee3e0', // ou 'CV_Maram_Boumenjel.pdf' si tu mets le PDF dans le dossier
   skills:[['HTML / CSS',90],['JavaScript',80],['PHP / Laravel',75],['SQL & bases de données',80],['Git & GitHub',85]],
-  stack:['HTML','CSS','JavaScript','PHP','Laravel','SQL','Git','GitHub','UI/UX','Chatbot','E-commerce']
+  stack:['HTML','CSS','JavaScript','PHP','Laravel','SQL','Git','GitHub','UI/UX','Chatbot','E-commerce','n8n']
 };
 /* ======================================= */
 var T={
-fr:{n_about:'À propos',n_skills:'Compétences',n_projects:'Projets',n_edu:'Formation',n_gallery:'Galerie',n_contact:'Contact',
+fr:{n_about:'À propos',n_skills:'Compétences',n_projects:'Projets',n_loop:'Démo',n_edu:'Formation',n_gallery:'Galerie',n_contact:'Contact',
 hi:'Bonjour, je suis',roles:['Étudiante en Informatique de Gestion','Développeuse web','Passionnée de projets digitaux'],
 intro:'Étudiante en 3ème année de Licence Informatique de Gestion à l’ESSECT, je conçois des sites web utiles : de la communauté de défis à l’outil de CV et à la boutique en ligne.',
 cv:'Télécharger mon CV',stat:'Licence Informatique de Gestion – 3ème année · ESSECT',
@@ -247,9 +288,16 @@ st1:'Année de licence',st2:'Projets web',st3:'Langues du site',st4:'Motivation'
 p1:'Plateforme où les utilisateurs publient et relèvent des défis, avec un chatbot intégré pour guider la communauté.',
 p2:'Site de traitement de CV qui aide les candidats à analyser et améliorer leur profil pour la recherche d’emploi.',
 p3t:'Boutique cosmétique',p3:'Site de vente en ligne de produits cosmétiques : catalogue, fiches produits et parcours d’achat.',
+p4t:'Vous avez parlé, on a agi',p4:'Automation qui suit chaque réclamation client jusqu’à sa résolution, puis prévient automatiquement tous les clients concernés.',demo:'Essayer la démo ↓',
+loop_h:'Fermer la boucle avec le client',
+loop_intro:'Quand un client se plaint, il apprend rarement ce qui a été fait ensuite. Cette automation regroupe les réclamations similaires, crée une tâche pour l’équipe et, une fois le problème réglé, envoie un message à tous les clients concernés. Clique sur « Marquer comme résolu » pour la tester.',
+stp1:'Collecte',stp2:'Compréhension par l’IA',stp3:'Regroupement',stp4:'Retour au client',
+l_recv:'Réclamations regroupées',l_cust:'clients concernés',l_open:'En cours',l_done:'Résolu',l_btn:'Marquer comme résolu',
+l_kpi:'Boucles fermées',l_log:'Messages envoyés',l_none:'Aucun message pour l’instant. Résous un problème pour lancer l’automation.',
+l_sent:'Message envoyé à',l_clients:'clients',l_reset:'Réinitialiser la démo',l_toast:'Automation déclenchée ✨',
 edu1:'Licence Informatique de Gestion – 3ème année',tel:'Téléphone',f1:'Nom',f2:'Email',f3:'Message',send:'Envoyer le message',
 ok:'Ta messagerie va s’ouvrir pour envoyer le message.',cvok:'CV téléchargé ✨'},
-en:{n_about:'About',n_skills:'Skills',n_projects:'Projects',n_edu:'Education',n_gallery:'Gallery',n_contact:'Contact',
+en:{n_about:'About',n_skills:'Skills',n_projects:'Projects',n_loop:'Demo',n_edu:'Education',n_gallery:'Gallery',n_contact:'Contact',
 hi:'Hi, I’m',roles:['Business Computing Student','Web Developer','Digital Projects Enthusiast'],
 intro:'A third-year Business Computing undergraduate at ESSECT, I build useful websites: from a challenge community to a CV tool and an online shop.',
 cv:'Download my CV',stat:'Bachelor in Business Computing – 3rd year · ESSECT',
@@ -258,10 +306,30 @@ st1:'Bachelor year',st2:'Web projects',st3:'Site languages',st4:'Motivation',
 p1:'A platform where users post and take on challenges, with a built-in chatbot to guide the community.',
 p2:'A CV processing website that helps candidates analyze and improve their profile for job hunting.',
 p3t:'Cosmetics shop',p3:'An online store for cosmetic products: catalog, product pages and a purchase flow.',
+p4t:'You spoke, we acted',p4:'An automation that follows each customer complaint through to its resolution, then automatically notifies every customer concerned.',demo:'Try the demo ↓',
+loop_h:'Closing the loop with the customer',
+loop_intro:'When a customer complains, they rarely hear what happened next. This automation groups similar complaints, creates a task for the team and, once the problem is fixed, sends a message to every customer concerned. Click “Mark as resolved” to try it.',
+stp1:'Collection',stp2:'AI understanding',stp3:'Grouping',stp4:'Customer feedback',
+l_recv:'Grouped complaints',l_cust:'customers concerned',l_open:'In progress',l_done:'Resolved',l_btn:'Mark as resolved',
+l_kpi:'Loops closed',l_log:'Messages sent',l_none:'No messages yet. Resolve an issue to trigger the automation.',
+l_sent:'Message sent to',l_clients:'customers',l_reset:'Reset the demo',l_toast:'Automation triggered ✨',
 edu1:'Bachelor in Business Computing – 3rd year',tel:'Phone',f1:'Name',f2:'Email',f3:'Message',send:'Send message',
 ok:'Your email app will open to send the message.',cvok:'CV downloaded ✨'}
 };
 var lang='fr',$=function(s){return document.querySelector(s)},$$=function(s){return document.querySelectorAll(s)};
+
+/* Données de la démo « Vous avez parlé, on a agi » */
+var LOOP=[
+  {n:8,fr:{t:'Guide des tailles trompeur',m:'« La robe est beaucoup trop petite par rapport au guide. »',r:'Nous avons corrigé le guide des tailles. Merci de nous avoir aidés.'},
+       en:{t:'Misleading size guide',m:'“The dress is much too small compared to the guide.”',r:'We have corrected the size guide. Thank you for helping us.'}},
+  {n:6,fr:{t:'Livraison en retard',m:'« Ma commande devait arriver mardi, je n’ai toujours rien reçu. »',r:'Nous avons changé de transporteur pour ce trajet. Merci pour votre patience.'},
+       en:{t:'Late delivery',m:'“My order was due on Tuesday and I still have nothing.”',r:'We have changed carrier for this route. Thank you for your patience.'}},
+  {n:4,fr:{t:'Code promo refusé',m:'« Le code de ma newsletter ne fonctionne pas au paiement. »',r:'Le code promo est de nouveau valide. Merci de nous l’avoir signalé.'},
+       en:{t:'Promo code rejected',m:'“The code from my newsletter does not work at checkout.”',r:'The promo code is valid again. Thank you for letting us know.'}},
+  {n:3,fr:{t:'Photo différente du produit',m:'« La couleur reçue n’est pas celle de la photo. »',r:'Nous avons remplacé la photo par une image fidèle. Merci pour votre retour.'},
+       en:{t:'Photo differs from product',m:'“The colour I received is not the one in the photo.”',r:'We have replaced the photo with a faithful image. Thank you for your feedback.'}}
+];
+var loopDone={},loopLog=[];
 
 /* Photo avec repli (initiales) */
 var FALLBACK='data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><linearGradient id="g"><stop offset="0" stop-color="#c084fc"/><stop offset="1" stop-color="#f472b6"/></linearGradient></defs><rect width="200" height="200" fill="url(#g)"/><text x="100" y="125" font-size="76" font-family="sans-serif" font-weight="800" fill="#fff" text-anchor="middle">MB</text></svg>');
@@ -279,6 +347,42 @@ CONFIG.skills.forEach(function(s){
 });
 var mq=$('#mq');mq.innerHTML=CONFIG.stack.concat(CONFIG.stack).map(function(w){return '<span>'+w+'</span>'}).join('');
 
+/* Toast */
+function toast(m){var t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(function(){t.classList.remove('on')},2400)}
+
+/* Démo : rendu de la liste, de l'indicateur et du journal */
+function renderLoop(){
+  var d=T[lang],L=$('#loopList'),tot=0,done=0;
+  L.innerHTML='';
+  LOOP.forEach(function(it,i){
+    var x=it[lang],ok=!!loopDone[i];
+    tot+=it.n;if(ok)done+=it.n;
+    var c=document.createElement('div');c.className='card lp';
+    var h=document.createElement('h3');h.textContent=x.t;
+    var m=document.createElement('p');m.textContent=x.m;
+    var row=document.createElement('div');row.className='lrow';
+    var pill=document.createElement('span');pill.className='pill'+(ok?' ok':'');
+    pill.textContent=(ok?d.l_done:d.l_open)+' · '+it.n+' '+d.l_cust;
+    row.appendChild(pill);
+    if(!ok){
+      var b=document.createElement('button');b.className='btn sm';b.textContent=d.l_btn;
+      b.onclick=function(){loopDone[i]=true;loopLog.unshift(i);renderLoop();toast(T[lang].l_toast)};
+      row.appendChild(b);
+    }
+    c.appendChild(h);c.appendChild(m);c.appendChild(row);L.appendChild(c);
+  });
+  var pct=tot?Math.round(done/tot*100):0;
+  $('#kpiv').textContent=pct+'%';$('#kpib').style.width=pct+'%';
+  var lg=$('#loopLog');lg.innerHTML='';
+  if(!loopLog.length){var e=document.createElement('div');e.className='empty';e.textContent=d.l_none;lg.appendChild(e)}
+  loopLog.forEach(function(i){
+    var it=LOOP[i],r=document.createElement('div');
+    r.textContent='✉️ '+d.l_sent+' '+it.n+' '+d.l_clients+' : « '+it[lang].r+' »';
+    lg.appendChild(r);
+  });
+}
+$('#loopReset').onclick=function(){loopDone={};loopLog=[];renderLoop()};
+
 /* Langue + effet machine à écrire */
 var tI=0,cI=0,del=false,tm;
 function type(){
@@ -294,6 +398,7 @@ function setLang(l){
   $$('[data-i]').forEach(function(e){e.textContent=d[e.dataset.i]});
   document.documentElement.lang=l;
   $$('.lang button').forEach(function(b){b.classList.toggle('on',b.dataset.l===l)});
+  renderLoop();
   clearTimeout(tm);cI=0;del=false;type();
   try{localStorage.setItem('mb-lang',l)}catch(e){}
 }
@@ -302,9 +407,6 @@ $$('.lang button').forEach(function(b){b.onclick=function(){setLang(b.dataset.l)
 /* Thème */
 function setTheme(t){document.documentElement.dataset.theme=t;$('#theme').textContent=t==='dark'?'🌙':'☀️';try{localStorage.setItem('mb-theme',t)}catch(e){}}
 $('#theme').onclick=function(){setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark')};
-
-/* Toast */
-function toast(m){var t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(function(){t.classList.remove('on')},2400)}
 
 /* CV (PDF si cvUrl, sinon .txt) */
 $('#cv').onclick=function(){
@@ -315,7 +417,7 @@ $('#cv').onclick=function(){
   var f=lang==='fr';
   var cv=['MARAM BOUMENJEL',f?'Étudiante en Licence Informatique de Gestion – 3ème année':'Business Computing Bachelor student – 3rd year','ESSECT','',
   'Email : boumenjelmaram2@gmail.com',(f?'Téléphone : ':'Phone : ')+'+216 22 732 512','LinkedIn : https://www.linkedin.com/in/maram-boumenjel-b59349331','GitHub : https://github.com/maram771','',
-  f?'PROJETS':'PROJECTS','- ChallengeHub : '+T[lang].p1,'- CareerPro : '+T[lang].p2,'- '+T[lang].p3t+' : '+T[lang].p3,'',
+  f?'PROJETS':'PROJECTS','- ChallengeHub : '+T[lang].p1,'- CareerPro : '+T[lang].p2,'- '+T[lang].p3t+' : '+T[lang].p3,'- '+T[lang].p4t+' : '+T[lang].p4,'',
   f?'COMPÉTENCES':'SKILLS'].concat(CONFIG.skills.map(function(s){return '- '+s[0]})).join('\r\n');
   var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([cv],{type:'text/plain;charset=utf-8'}));
   a.download='CV_Maram_Boumenjel.txt';document.body.appendChild(a);a.click();a.remove();toast(T[lang].cvok);
